@@ -1,0 +1,345 @@
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: 2c5d0cfd-a7b5-47a8-a947-a6d100c25638.mysql.sequelizer.com    Database: db2c5d0cfda7b547a8a947a6d100c25638
+-- ------------------------------------------------------
+-- Server version	5.5.46-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `db2c5d0cfda7b547a8a947a6d100c25638`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `db2c5d0cfda7b547a8a947a6d100c25638`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `db2c5d0cfda7b547a8a947a6d100c25638` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `db2c5d0cfda7b547a8a947a6d100c25638`;
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(20) DEFAULT NULL,
+  `Password` varchar(20) DEFAULT NULL,
+  `AccountType` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'Hoang','123456','Admin'),(2,'Dai','123456','Client'),(3,'HTHHOANG','123456','Merchant');
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+
+--
+-- Table structure for table `adminaccount`
+--
+
+DROP TABLE IF EXISTS `adminaccount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adminaccount` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdACCOUNT` int(11) DEFAULT NULL,
+  `Email` varchar(20) DEFAULT NULL,
+  `Address` varchar(20) DEFAULT NULL,
+  `NumberPhone` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdACCOUNT` (`IdACCOUNT`),
+  CONSTRAINT `adminaccount_ibfk_1` FOREIGN KEY (`IdACCOUNT`) REFERENCES `account` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adminaccount`
+--
+
+/*!40000 ALTER TABLE `adminaccount` DISABLE KEYS */;
+INSERT INTO `adminaccount` VALUES (1,1,'HTH@Gmail.com','Qu?n 7 H? Ch','0312654428');
+/*!40000 ALTER TABLE `adminaccount` ENABLE KEYS */;
+
+--
+-- Table structure for table `bussinesstype`
+--
+
+DROP TABLE IF EXISTS `bussinesstype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bussinesstype` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(10) DEFAULT NULL,
+  `Description` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bussinesstype`
+--
+
+/*!40000 ALTER TABLE `bussinesstype` DISABLE KEYS */;
+INSERT INTO `bussinesstype` VALUES (1,'T?p h','Bu?n b'),(2,'Qu','C'),(3,'','C');
+/*!40000 ALTER TABLE `bussinesstype` ENABLE KEYS */;
+
+--
+-- Table structure for table `clientaccount`
+--
+
+DROP TABLE IF EXISTS `clientaccount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clientaccount` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdACCOUNT` int(11) DEFAULT NULL,
+  `Name` varchar(20) DEFAULT NULL,
+  `Address` varchar(30) DEFAULT NULL,
+  `Email` varchar(30) DEFAULT NULL,
+  `Avartar` varchar(100) DEFAULT NULL,
+  `Description` varchar(300) DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `Sex` bit(1) DEFAULT NULL,
+  `PhoneNumber` varchar(12) DEFAULT NULL,
+  `DateBirth` date DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdACCOUNT` (`IdACCOUNT`),
+  CONSTRAINT `clientaccount_ibfk_1` FOREIGN KEY (`IdACCOUNT`) REFERENCES `account` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientaccount`
+--
+
+/*!40000 ALTER TABLE `clientaccount` DISABLE KEYS */;
+INSERT INTO `clientaccount` VALUES (1,2,'Di?p C','Qu?n 7 H? Ch','DAI@Gmail.com',NULL,'',21,'','05390505','1995-02-02');
+/*!40000 ALTER TABLE `clientaccount` ENABLE KEYS */;
+
+--
+-- Table structure for table `listreward`
+--
+
+DROP TABLE IF EXISTS `listreward`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `listreward` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdList` int(11) DEFAULT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `IdReward` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `listreward`
+--
+
+/*!40000 ALTER TABLE `listreward` DISABLE KEYS */;
+INSERT INTO `listreward` VALUES (1,1,10,1),(2,1,10,2),(3,2,20,1),(4,2,10,2);
+/*!40000 ALTER TABLE `listreward` ENABLE KEYS */;
+
+--
+-- Table structure for table `promotion`
+--
+
+DROP TABLE IF EXISTS `promotion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `promotion` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdSTORE` int(11) DEFAULT NULL,
+  `Name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Status` bit(1) DEFAULT NULL,
+  `DateBegin` datetime DEFAULT NULL,
+  `DateEnd` datetime DEFAULT NULL,
+  `Description` varchar(300) CHARACTER SET utf8 DEFAULT NULL,
+  `IdListReward` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdSTORE` (`IdSTORE`),
+  CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`IdSTORE`) REFERENCES `store` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promotion`
+--
+
+/*!40000 ALTER TABLE `promotion` DISABLE KEYS */;
+INSERT INTO `promotion` VALUES (1,1,'Ð?t 1','\0','2016-02-02 00:00:00','2016-03-02 00:00:00','d?t khuy?n m',1),(2,1,'Ð?t 2','','2016-09-02 00:00:00','2016-10-02 00:00:00','d?t khuy?n m',2);
+/*!40000 ALTER TABLE `promotion` ENABLE KEYS */;
+
+--
+-- Table structure for table `qrcode`
+--
+
+DROP TABLE IF EXISTS `qrcode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `qrcode` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdPromotion` int(11) DEFAULT NULL,
+  `Url` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdPromotion` (`IdPromotion`),
+  CONSTRAINT `qrcode_ibfk_1` FOREIGN KEY (`IdPromotion`) REFERENCES `promotion` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `qrcode`
+--
+
+/*!40000 ALTER TABLE `qrcode` DISABLE KEYS */;
+INSERT INTO `qrcode` VALUES (1,1,'abc/xyz/1');
+/*!40000 ALTER TABLE `qrcode` ENABLE KEYS */;
+
+--
+-- Table structure for table `reward`
+--
+
+DROP TABLE IF EXISTS `reward`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reward` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `ChanceToGet` int(11) DEFAULT NULL,
+  `ChanceToRoll` int(11) DEFAULT NULL,
+  `Status` bit(1) DEFAULT NULL,
+  `TimeRemain` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reward`
+--
+
+/*!40000 ALTER TABLE `reward` DISABLE KEYS */;
+INSERT INTO `reward` VALUES (1,'nh?u m',10,10,'',3600),(2,'nh?u m',20,20,'',3500);
+/*!40000 ALTER TABLE `reward` ENABLE KEYS */;
+
+--
+-- Table structure for table `store`
+--
+
+DROP TABLE IF EXISTS `store`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `store` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `MapAddress` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `PhysicAddress` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Email` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `Avatar` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `Description` varchar(300) CHARACTER SET utf8 DEFAULT NULL,
+  `BussinessType` int(11) DEFAULT NULL,
+  `PhoneNumber` varchar(12) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `BussinessType` (`BussinessType`),
+  CONSTRAINT `store_ibfk_1` FOREIGN KEY (`BussinessType`) REFERENCES `bussinesstype` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `store`
+--
+
+/*!40000 ALTER TABLE `store` DISABLE KEYS */;
+INSERT INTO `store` VALUES (1,'Nh?u 123!','10.751822,106.706406','Tr?n Xu','Nhau123@Gmail.com',NULL,'Quán nh?u q7',1,'09890984'),(2,'Nh?u 321','10.751822,106.706406','Tr?n Xu','Nhau123@Gmail.com',NULL,'Quán d?ng h?',2,'09890984');
+/*!40000 ALTER TABLE `store` ENABLE KEYS */;
+
+--
+-- Table structure for table `storeaccount`
+--
+
+DROP TABLE IF EXISTS `storeaccount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `storeaccount` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdACCOUNT` int(11) DEFAULT NULL,
+  `IdSTORE` int(11) DEFAULT NULL,
+  `Name` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `Email` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `Address` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `Sex` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdACCOUNT` (`IdACCOUNT`),
+  KEY `IdSTORE` (`IdSTORE`),
+  CONSTRAINT `storeaccount_ibfk_1` FOREIGN KEY (`IdACCOUNT`) REFERENCES `account` (`Id`),
+  CONSTRAINT `storeaccount_ibfk_2` FOREIGN KEY (`IdSTORE`) REFERENCES `store` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `storeaccount`
+--
+
+/*!40000 ALTER TABLE `storeaccount` DISABLE KEYS */;
+INSERT INTO `storeaccount` VALUES (1,3,1,'H','HTH@Gmail.com','Qu?n 7 H? Ch',22,'');
+/*!40000 ALTER TABLE `storeaccount` ENABLE KEYS */;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `IdPromotion` int(11) DEFAULT NULL,
+  `IdReWard` int(11) DEFAULT NULL,
+  `IdClientUser` int(11) DEFAULT NULL,
+  `IsWin` bit(1) DEFAULT NULL,
+  `Date` datetime DEFAULT NULL,
+  `Status` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdPromotion` (`IdPromotion`),
+  KEY `IdReWard` (`IdReWard`),
+  KEY `IdClientUser` (`IdClientUser`),
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`IdPromotion`) REFERENCES `promotion` (`Id`),
+  CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`IdReWard`) REFERENCES `reward` (`Id`),
+  CONSTRAINT `ticket_ibfk_3` FOREIGN KEY (`IdClientUser`) REFERENCES `clientaccount` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (1,1,1,1,'','2016-10-02 00:00:00','\0');
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-01-21 10:08:28

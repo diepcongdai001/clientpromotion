@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2cc2f8bfa4043d29b79d78348e561c1" Name="Diagram1">
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.account" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.adminaccount" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.bussinesstype" Width="1.5" PointX="1.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.clientaccount" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.listreward" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.promotion" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.qrcode" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.reward" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.store" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.storeaccount" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbdafb895620d48b1acdaa70d00fd67f0Model.ticket" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.adminaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.clientaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.storeaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.store_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.ticket_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.promotion_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.qrcode_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.ticket_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.ticket_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbdafb895620d48b1acdaa70d00fd67f0Model.storeaccount_ibfk_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
